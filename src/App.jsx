@@ -543,7 +543,7 @@ export default function Portfolio() {
             </div>
             <div className="mt-16 text-center">
               <span className="text-purple-400 text-sm">&lt;/portfolio&gt;</span>
-              <p className={`text-sm ${muted} mt-2`}><span className="text-gray-600">/* </span>© 2026 Mike Ryan B. Cervantes. All rights reserved.<span className="text-gray-600"> */</span></p>
+              <p className={`text-sm ${muted} mt-2`}><span className="text-gray-600">/* </span>© {new Date().getFullYear()} Mike Ryan B. Cervantes. All rights reserved.<span className="text-gray-600"> */</span></p>
             </div>
           </div>
         </section>
