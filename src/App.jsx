@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, Linkedin, Github, Home, Code, Briefcase, FolderGit2, Send, ChevronRight, MapPin, Calendar, Moon, Sun, Download, User, AtSign, FileText, MessageSquare, ArrowUp, Filter, Menu, X } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Home, Code, Briefcase, FolderGit2, Send, ChevronRight, MapPin, Calendar, Moon, Sun, Download, User, AtSign, FileText, MessageSquare, ArrowUp, Filter, Menu, X, Bot } from 'lucide-react';
 
 const ScanningLine = () => {
   const [scanning, setScanning] = useState(false);
@@ -113,6 +113,9 @@ const TechLogo = ({ name, isDark }) => {
     'TestNG': { img: 'https://avatars.githubusercontent.com/u/12528662?s=200&v=4', glow: 'group-hover:shadow-red-500/50' },
     'GitHub': { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', glow: 'group-hover:shadow-purple-500/50', invert: true },
     'GitHub Actions': { img: 'https://avatars.githubusercontent.com/u/44036562?s=200&v=4', glow: 'group-hover:shadow-blue-500/50' },
+    'Azure DevOps': { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuredevops/azuredevops-original.svg', glow: 'group-hover:shadow-blue-500/50' },
+    'GitLab CI': { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg', glow: 'group-hover:shadow-orange-500/50' },
+    'Cypress': { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg', glow: 'group-hover:shadow-gray-500/50' },
   };
   const l = logos[name] || { img: '', glow: 'group-hover:shadow-gray-500/50' };
   return (
@@ -216,23 +219,30 @@ export default function Portfolio() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); 
     setMobileMenu(false); 
   };
-  const techs = ['Selenium', 'Playwright', 'Robot Framework', 'Java', 'Python', 'JavaScript', 'TypeScript', 'Cucumber', 'Jenkins', 'GitHub Actions', 'AWS', 'Git', 'Jira', 'Postman', 'Node.js', 'Maven', 'TestNG', 'GitHub'];
+  const techs = ['Playwright', 'Robot Framework', 'Selenium', 'Cypress', 'Cucumber', 'TypeScript', 'JavaScript', 'Python', 'Java', 'Node.js', 'Azure DevOps', 'GitLab CI', 'GitHub Actions', 'Jenkins', 'Jira', 'Postman', 'AWS', 'Git', 'GitHub'];
   const skills = {
-    auto: [{ n: 'Selenium', l: 95 }, { n: 'Playwright', l: 90 }, { n: 'Cucumber/BDD', l: 92 }, { n: 'Robot Framework', l: 88 }, { n: 'TestNG/JUnit', l: 90 }],
-    lang: [{ n: 'Java', l: 92 }, { n: 'Python', l: 85 }, { n: 'JavaScript/TypeScript', l: 80 }, { n: 'Gherkin', l: 95 }],
-    tools: [{ n: 'Jenkins', l: 88 }, { n: 'Git/GitHub', l: 90 }, { n: 'Jira', l: 95 }, { n: 'Postman', l: 85 }, { n: 'AWS', l: 75 }],
+    auto: [{ n: 'Playwright', l: 95 }, { n: 'Robot Framework', l: 90 }, { n: 'Selenium', l: 88 }, { n: 'Cucumber/BDD', l: 90 }, { n: 'API Testing', l: 88 }],
+    lang: [{ n: 'TypeScript', l: 90 }, { n: 'JavaScript/Node.js', l: 88 }, { n: 'Python', l: 82 }, { n: 'Java', l: 80 }, { n: 'Gherkin', l: 95 }],
+    tools: [{ n: 'Azure DevOps', l: 88 }, { n: 'GitLab CI', l: 90 }, { n: 'Jenkins', l: 80 }, { n: 'Jira/Zephyr/TestRail', l: 95 }, { n: 'Postman', l: 85 }],
+    ai: [{ n: 'Claude Code Agents', l: 85 }, { n: 'LLM Integration (API/Ollama)', l: 75 }, { n: 'REST API Integrations', l: 88 }, { n: 'Power Automate/Teams', l: 70 }],
   };
 
   const projects = [
+    { t: "Personal Inbox Agent", d: "Gmail triage agent on a local LLM: sorts each email into important, to-do, FYI or noise, writes a daily summary and to-do list, and labels mail only under AI/. Never archives, deletes or sends; treats every email as untrusted input. 26 tests.", tech: ["Python", "Gmail API", "Ollama", "SQLite"], category: "AI Automation", img: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/inbox-agent" },
+    { t: "Fashion Scraper & AI Shopping Board", d: "Turns public Shopify feeds into one row per colourway with price history and a filterable board. A local LLM scores each product; weights live in config. Polite by design: robots.txt checks, request spacing, caching. 26 tests.", tech: ["Python", "SQLite", "Ollama", "Shopify feeds"], category: "AI Automation", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/fashion-scraper" },
+    { t: "AI Activity-Digest Agent", d: "Pulls activity from GitLab, Jira and TestRail into one record model, filters it for relevance, and summarises it with Claude into a markdown report and Discord post. Grouping review comments cut the LLM payload from ~70k to ~46k tokens.", tech: ["Python", "Claude", "REST APIs", "Discord"], category: "AI Automation", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop" },
+    { t: "Playwright E-commerce Framework", d: "End-to-end test automation framework using Playwright for cross-browser testing with TypeScript, featuring Page Object Model and comprehensive reporting.", tech: ["Playwright", "TypeScript", "Node.js", "CI/CD"], category: "Playwright", img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/playwright-ecommerce-framework" },
+    { t: "BookHaven Cypress Framework", d: "Cypress E2E test framework for BookHaven with page objects, API testing, data factories, and CI/CD.", tech: ["Cypress", "TypeScript", "API Testing", "CI/CD"], category: "Cypress", img: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/bookhaven-cypress-framework" },
+    { t: "Selenium Java Cucumber", d: "BDD test automation framework with Selenium WebDriver, Cucumber, implementing keyword-driven and data-driven testing approaches with CI/CD integration.", tech: ["Selenium", "Java", "Cucumber", "Maven"], category: "Selenium", img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/java-cucumber-automation-framework" },
+    { t: "Robot Framework Suite", d: "Keyword-driven test automation using Robot Framework with Python, featuring reusable keywords and integration with Jenkins CI/CD pipelines.", tech: ["Robot Framework", "Python", "Jenkins"], category: "Robot Framework", img: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/robotframework-ecommerce-tests" },
     { t: "AttendanceQR App", d: "Full-stack React attendance management system with QR code scanning, multi-role access control, schedule management, and dashboard analytics.", tech: ["React", "Supabase", "Tailwind", "QR Code"], category: "Web App", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/attendance-system" },
-    { t: "Playwright Test Framework", d: "End-to-end test automation framework using Playwright for cross-browser testing with TypeScript, featuring Page Object Model and comprehensive reporting.", tech: ["Playwright", "TypeScript", "Node.js", "CI/CD"], category: "Playwright", img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop", github: "https://github.com/yourusername/playwright-framework" },
-    { t: "Selenium Java Cucumber", d: "BDD test automation framework with Selenium WebDriver, Cucumber, implementing keyword-driven and data-driven testing approaches with CI/CD integration.", tech: ["Selenium", "Java", "Cucumber", "Maven"], category: "Selenium", img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/java-cucumber-framework" },
-    { t: "Robot Framework Suite", d: "Keyword-driven test automation using Robot Framework with Python, featuring reusable keywords and integration with Jenkins CI/CD pipelines.", tech: ["Robot Framework", "Python", "Jenkins"], category: "Robot Framework", img: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=400&fit=crop", github: "https://github.com/noobcat0418/Saucedemo-Testcases" },
   ];
 
   const projectCategories = [
     { name: 'All', icon: Filter },
+    { name: 'AI Automation', icon: Bot },
     { name: 'Playwright', icon: () => <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" className="w-4 h-4" /> },
+    { name: 'Cypress', icon: () => <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg" alt="Cypress" className="w-4 h-4" /> },
     { name: 'Selenium', icon: () => <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" alt="Selenium" className="w-4 h-4" /> },
     { name: 'Robot Framework', icon: () => <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png" alt="Robot" className="w-4 h-4" /> },
     { name: 'Web App', icon: Code },
@@ -240,9 +250,10 @@ export default function Portfolio() {
   const filteredProjects = projectFilter === 'All' ? projects : projects.filter(p => p.category === projectFilter);
 
   const exp = [
-    { r: "Agile Tester", co: "Hammerjack", loc: "Makati City", p: "Dec 2024 - Present", pts: ["Spearheading Agile Testing adoption across cross-functional development teams", "Building automation training programs to upskill 5 QA team members", "Writing test automation scripts using Playwright/Robotframework and configuring CI/CD pipelines with Jenkins"] },
-    { r: "Senior Automation Engineer", co: "Loanworks Inc.", loc: "Ortigas City", p: "Nov 2021 - Dec 2024", pts: ["Migrated legacy test framework to Cucumber BDD for improved test readability", "Developed automated test scripts using Selenium Webdriver and Cucumber for financial services applications", "Collaborated on QA initiatives reducing regression testing time and improving release cycles"] },
-    { r: "Test Engineer", co: "Accenture Inc.", loc: "Mandaluyong City", p: "Dec 2018 - Oct 2020", pts: ["Built automated regression suite for healthcare applications using Selenium WebDriver", "Integrated Jenkins for CI/CD enabling continuous testing workflows", "Converted legacy manual tests to Cucumber BDD framework for better maintainability"] },
+    { r: "Senior Quality Assurance Engineer", co: "Hammerjack", loc: "Makati City", p: "Nov 2024 - Present", pts: ["Own quality across a multi-module Australian enterprise case management platform: 128 user stories, 548 SIT/UAT/E2E test cases in Zephyr Scale, 92 production defects filed", "Designed a Playwright framework (UI and API) on Azure DevOps Pipelines with nightly regression and failure alerts; migrated the legacy Robot Framework suite and maintain 400+ tests", "Built and run an in-house AI agent service that takes Jira tickets from Microsoft Teams commands through Claude Code stages (test design, Playwright automation, test runs, reporting) behind three human approval gates; 418 paired QA tasks completed end to end", "Shipped 69 pull requests across two repositories and mentor QA teammates on framework usage and Agile testing"] },
+    { r: "QA Automation Engineer", co: "Axya", loc: "Remote", p: "Nov 2023 - Oct 2024", pts: ["Founded the end-to-end suite from an empty repository: 116 spec files and ~346 tests on a five-layer Playwright/TypeScript framework", "Owned the GitLab CI pipeline end to end; cut the merge-request gate from 15.4 to 3.7 minutes and the nightly run from 25.4 to 19.2 minutes", "Built a typed API client with token auth and auto re-authentication; API-seeded test data cut ~40s of UI setup to ~2s per test", "Wired JUnit, HTML and TestRail reporting per pipeline and mapped 357 TestRail cases to automated specs"] },
+    { r: "Senior Automation Engineer", co: "Loanworks Inc.", loc: "Ortigas City", p: "Nov 2020 - Oct 2023", pts: ["Migrated a legacy automation framework to Cucumber BDD across loan origination and mortgage servicing workflows", "Developed and maintained automated regression scripts for a business-critical financial services platform", "Partnered with developers and project managers to shape release test plans and drive defect resolution"] },
+    { r: "Test Engineer", co: "Accenture Inc.", loc: "Mandaluyong City", p: "Jan 2018 - Oct 2020", pts: ["Built Selenium WebDriver regression automation for an enterprise product line", "Migrated the suite to Cucumber BDD and integrated it with Jenkins CI for continuous testing", "Produced suite-stability reports for stakeholders and applied performance testing with LoadRunner and UFT"] },
   ];
 
   const bg = isDark ? 'bg-black' : 'bg-gray-50';
@@ -264,7 +275,7 @@ export default function Portfolio() {
             <div className="flex items-center gap-1 cursor-pointer group" onClick={() => scrollTo('home')}>
               <span className="text-green-500 text-xl font-bold transition-all duration-300 group-hover:text-green-400" style={{ fontFamily: "'Fira Code', monospace" }}>&gt;_</span>
               <span className={`text-lg font-semibold transition-all duration-300 group-hover:text-green-400 ${isDark ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: "'Fira Code', monospace" }}>Mike</span>
-              <span className="text-green-500 text-lg font-semibold" style={{ fontFamily: "'Fira Code', monospace" }}>@QA</span>
+              <span className="text-green-500 text-lg font-semibold" style={{ fontFamily: "'Fira Code', monospace" }}>@QA+AI</span>
             </div>
             
             {/* Nav Items - Right Side */}
@@ -352,11 +363,12 @@ export default function Portfolio() {
               <p className="text-green-500 mb-2 text-sm" style={{ fontFamily: "'Fira Code', monospace" }}>root@system:~$ ./initialize_profile.sh</p>
               <p className="text-green-500 mb-4 flex items-center gap-2 text-sm tracking-wider"><span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span><span className="opacity-70">//</span> Available for opportunities</p>
               <h1 className="text-4xl lg:text-6xl font-bold mb-4 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Hi, I'm <span className="text-green-500">Mike Ryan</span></h1>
-              <h2 className={`text-xl lg:text-2xl mb-6 h-10 ${muted} tracking-wide`}><span className="text-cyan-400 mr-2">$</span><TypingEffect texts={['Senior QA Engineer', 'Automation Specialist', 'Selenium Expert', 'Playwright Developer']} /></h2>
+              <h2 className={`text-xl lg:text-2xl mb-6 h-10 ${muted} tracking-wide`}><span className="text-cyan-400 mr-2">$</span><TypingEffect texts={['Senior QA Automation Engineer', 'Playwright Developer', 'AI Automation Builder', 'Test Framework Architect']} /></h2>
               
               <p className="mb-2 text-sm" style={{ fontFamily: "'Fira Code', monospace" }}><span className="text-cyan-400">$</span> <span className="text-green-500">cat about.txt</span></p>
               <div className={`${muted} mb-8 max-w-xl leading-relaxed text-sm`}>
-                <p>As a <span className="text-green-500">QA Automation Tester</span> with six years of expertise, I specialize in crafting robust, scalable test suites for web and mobile platforms using <span className="text-green-500">Playwright</span>, <span className="text-green-500">Selenium</span>, <span className="text-green-500">Cucumber</span>, and <span className="text-green-500">GitHub Actions</span>.</p>
+                <p>As a <span className="text-green-500">Senior QA Automation Engineer</span> with 8+ years of experience, I build robust, scalable test suites and CI/CD pipelines using <span className="text-green-500">Playwright</span>, <span className="text-green-500">Robot Framework</span>, <span className="text-green-500">Selenium</span>, and <span className="text-green-500">Cucumber</span>.</p>
+                <p className="mt-3">I now bring the same reliability discipline to <span className="text-green-500">AI automation</span>: agents and integrations with human approval gates, safety limits, and tests.</p>
               </div>
               
               <div className="flex flex-wrap gap-4 mb-6">
@@ -397,6 +409,21 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
+
+            {/* Impact stats */}
+            <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { v: '8+', l: 'years in test automation' },
+                { v: '400+', l: 'Playwright tests maintained' },
+                { v: '15.4→3.7', u: 'min', l: 'merge-request gate cut' },
+                { v: '418', l: 'tasks completed by an AI agent I built' },
+              ].map(({ v, u, l }) => (
+                <div key={l} className={`group ${card} border rounded-xl p-5 transition-all duration-300 hover:border-green-500/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/20`}>
+                  <p className="text-2xl lg:text-3xl font-bold text-green-500 group-hover:text-green-400 transition-colors duration-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{v}{u && <span className="text-base text-gray-500 ml-1">{u}</span>}</p>
+                  <p className={`${muted} text-xs mt-1`}><span className="text-gray-600">// </span>{l}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -409,8 +436,8 @@ export default function Portfolio() {
               <p className={`${muted} text-sm tracking-wide`}><span className="text-gray-600">// </span>Technologies I work with</p>
             </div>
             <div className="flex flex-wrap justify-center gap-2 mb-16">{techs.map(t => <TechLogo key={t} name={t} isDark={isDark} />)}</div>
-            <div className="grid lg:grid-cols-3 gap-8">
-              {[{ title: 'test_automation', icon: Code, data: skills.auto }, { title: 'languages', icon: FileText, data: skills.lang }, { title: 'devops_tools', icon: Briefcase, data: skills.tools }].map(({ title, icon: Icon, data }) => (
+            <div className="grid md:grid-cols-2 gap-8">
+              {[{ title: 'test_automation', icon: Code, data: skills.auto }, { title: 'languages', icon: FileText, data: skills.lang }, { title: 'devops_tools', icon: Briefcase, data: skills.tools }, { title: 'ai_automation', icon: Bot, data: skills.ai }].map(({ title, icon: Icon, data }) => (
                 <div key={title} className={`group ${card} border rounded-xl p-6 transition-all duration-300 hover:border-green-500/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/20 relative overflow-hidden cursor-pointer`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
@@ -429,7 +456,7 @@ export default function Portfolio() {
             <div className="text-center mb-8">
               <span className="text-purple-400 text-sm tracking-wider">&lt;section id="projects"&gt;</span>
               <h2 className="text-3xl font-bold mb-2 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Featured <span className="text-green-500">Projects</span></h2>
-              <p className={`${muted} text-sm tracking-wide`}><span className="text-gray-600">// </span>Test frameworks and applications I've built</p>
+              <p className={`${muted} text-sm tracking-wide`}><span className="text-gray-600">// </span>AI agents, test frameworks and applications I've built</p>
             </div>
             
             {/* Filter Buttons */}
@@ -453,7 +480,7 @@ export default function Portfolio() {
                   <div className="relative h-52 overflow-hidden">
                     <img src={p.img} alt={p.t} className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-75 group-hover:brightness-125 group-hover:rounded-lg" />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500"></div>
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" className={`absolute top-4 right-4 p-2 rounded-lg opacity-0 group-hover:opacity-100 hover:scale-125 hover:rotate-12 transition-all duration-300 ${isDark ? 'bg-black/70 hover:bg-green-500/50' : 'bg-white/70 hover:bg-green-500/50'}`}><Github size={20} /></a>
+                    {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer" className={`absolute top-4 right-4 p-2 rounded-lg opacity-0 group-hover:opacity-100 hover:scale-125 hover:rotate-12 transition-all duration-300 ${isDark ? 'bg-black/70 hover:bg-green-500/50' : 'bg-white/70 hover:bg-green-500/50'}`}><Github size={20} /></a>}
                     <div className="absolute inset-0 bg-gradient-to-b from-green-500/20 via-transparent to-transparent h-[30%] -translate-y-full group-hover:translate-y-[400%] transition-transform duration-1000 ease-in-out"></div>
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium bg-green-500/90 text-black">{p.category}</div>
